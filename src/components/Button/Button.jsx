@@ -1,5 +1,15 @@
-import '../styles.css';
+import { Component } from 'react';
 
-export const Button = () => {
-    // Load more
+export class Button extends Component {
+    state = {
+    page: 1,
+}
+   
+    handleClick = () => {
+        this.setState(prevState => { return { page: prevState.page + 1 } })
+        return this.props.onCl(this.state.page);
+    }
+    render() {
+        return <button type='button' className='button-load' onClick={this.handleClick}>Load more</button>
+    }
 }
